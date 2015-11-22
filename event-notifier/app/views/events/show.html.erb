@@ -1,0 +1,69 @@
+<div class="content">
+  <div class="schedule-section mini-section" id="schedule-section">
+    <div class="row">
+      <div class="col-md-5 header schedule-header">
+        <h2>SCHEDULE for <%= @event.name %> </h2>
+      </div>
+    </div>
+
+    <%= form_for :subscribers, :url => "/create_subs" do |f| %>
+        <div class="row">
+          <div class="col-xs-6 schedule-table">
+            <h5 class="table-header">Saturday, November 21</h5>
+            <table class="table">
+              <tbody>
+              <tr>
+
+              </tr>
+              <% @sub_events.each do |sub_event| %>
+                  <% if sub_event.start_date < DateTime.new(2015, 11, 22, 0, 0, 0) %>
+                      <tr>
+                        <td class="table-time">
+                          <%= sub_event.start_date.strftime("%I:%M %p") %>
+                        </td>
+                        <td>
+                          <%= sub_event.name %>
+                        </td>
+                        <td>
+                          <%= f.check_box sub_event.id %>
+                        </td>
+                      </tr>
+                  <% end %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 schedule-table">
+            <h5 class="table-header">Sunday, November 22</h5>
+            <table class="table">
+              <tbody>
+              <tr>
+
+              </tr>
+
+              <% @sub_events.each do |sub_event| %>
+                  <% if sub_event.start_date > DateTime.new(2015, 11, 22, 0, 0, 0) %>
+                      <tr>
+                        <td class="table-time">
+                          <%= sub_event.start_date.strftime("%I:%M %p") %>
+                        </td>
+                        <td>
+                          <%= sub_event.name %>
+                        </td>
+                        <td>
+                          <%= f.check_box sub_event.id %>
+                        </td>
+                      </tr>
+                  <% end %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <%= f.text_field :phone_number, :placeholder => "Enter your cell number for SMS updates!" %>
+        <%= f.submit "Subscribe to these awesome events!" %>
+    <% end %>
+  </div>
+</div>
