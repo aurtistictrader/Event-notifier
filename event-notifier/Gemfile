@@ -41,3 +41,6 @@ gem 'spring',        group: :development
 gem 'twilio-ruby'
 
 gem 'pg'
+
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
