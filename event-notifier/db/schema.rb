@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20151122102756) do
 
   create_table "events", force: true do |t|
     t.datetime "start_time"
-    t.string   "message"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,7 +26,6 @@ ActiveRecord::Schema.define(version: 20151122102756) do
   create_table "sub_events", force: true do |t|
     t.integer  "event_id"
     t.string   "name"
-    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "start_date"
