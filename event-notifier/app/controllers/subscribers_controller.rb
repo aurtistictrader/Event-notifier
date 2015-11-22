@@ -14,16 +14,16 @@ class SubscribersController < ApplicationController
 
     inserts = []
     subscriber_ids.each do |sub|
-      inserts.push "(#{sub}, #{phone_number})"
+      inserts.push "('#{sub}', '#{phone_number}', '#{Time.now.to_s}', '#{Time.now.to_s}')"
     end
-    sql = "INSERT INTO subscribers (sub_events_id, phone_number) VALUES #{inserts.join(", ")}"
+    sql = "INSERT INTO subscribers (sub_events_id, phone_number, created_at, updated_at) VALUES #{inserts.join(", ")}"
 
     results = ActiveRecord::Base.connection.execute(sql)
 
     if results.present?
-      results
+      redirect_to :root
     else
-      nil
+      redirect_to :back
     end
 
   end
