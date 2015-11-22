@@ -44,3 +44,5 @@ gem 'pg'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+
+gem 'whenever', :require => false
