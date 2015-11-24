@@ -5,7 +5,7 @@ namespace :event do
   desc "Rake task to get events data"
   task :notify => :environment do
     puts "NOTIFYING SUBS"
-    notify_time = 15.minutes.ago.to_time
+    notify_time = 15.minutes.since.to_time
     notify_time_str = notify_time.to_s[0, notify_time.to_s.length - 5]
     overdue_events = SubEvent.where("start_date < ? ", notify_time_str)
 
