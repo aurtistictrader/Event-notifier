@@ -14,14 +14,10 @@ namespace :event do
       event_ids.push(event.id)
     end
 
-    # put your own credentials here
-    account_sid = 'ACa9ba8e6758de9fdb7d334bc1c5073b64'
-    auth_token = 'ff79cde33a76150c4c3f20e6f7438d20'
-
-    # alternatively, you can preconfigure the client like so
+    # preconfigure the client like so
     Twilio.configure do |config|
-      config.account_sid = account_sid
-      config.auth_token = auth_token
+      config.account_sid = ENV['ACCOUNT_SID']
+      config.auth_token = ENV['AUTH_TOKEN']
     end
 
     # and then you can create a new client without parameters
